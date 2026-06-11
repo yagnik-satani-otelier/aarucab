@@ -23,11 +23,6 @@ export const bookingSchema = z
     mobile: z
       .string()
       .regex(/^[6-9]\d{9}$/, "Enter a valid 10-digit mobile number"),
-    email: z
-      .string()
-      .email("Enter a valid email address")
-      .optional()
-      .or(z.literal("")),
     tripType: z.enum(tripTypes, { message: "Please select a trip type" }),
     pickupLocation: z.string().min(3, "Pickup location is required"),
     dropLocation: z.string().min(3, "Drop location is required"),
@@ -39,11 +34,7 @@ export const bookingSchema = z
     returnDate: z.string().optional(),
     returnTime: z.string().optional(),
     rentalDuration: z.string().optional(),
-    flightNumber: z.string().optional(),
     vehiclePreference: z.string().optional(),
-    passengers: z.string().optional(),
-    luggage: z.string().optional(),
-    notes: z.string().optional(),
     website: z.string().optional(),
   })
   .superRefine((data, ctx) => {

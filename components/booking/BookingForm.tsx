@@ -90,7 +90,6 @@ export function BookingForm() {
     defaultValues: {
       fullName: "",
       mobile: "",
-      email: "",
       tripType: "",
       pickupLocation: "",
       dropLocation: "",
@@ -99,11 +98,7 @@ export function BookingForm() {
       returnDate: "",
       returnTime: "",
       rentalDuration: "",
-      flightNumber: "",
       vehiclePreference: "",
-      passengers: "",
-      luggage: "",
-      notes: "",
       website: "",
     } as unknown as DefaultValues<BookingFormData>,
   });
@@ -292,7 +287,7 @@ export function BookingForm() {
               icon={Car}
             >
               <select
-                className={cn(inputClass, "cursor-pointer")}
+                className={cn(inputClass, "booking-select cursor-pointer")}
                 {...register("vehiclePreference")}
               >
                 <option value="">Select Vehicle</option>
@@ -310,7 +305,7 @@ export function BookingForm() {
               error={errors.tripType?.message}
             >
               <select
-                className={cn(inputClass, "cursor-pointer pl-1")}
+                className={cn(inputClass, "booking-select cursor-pointer")}
                 {...register("tripType")}
               >
                 <option value="">Trip Type</option>
@@ -370,64 +365,6 @@ export function BookingForm() {
               )}
             </div>
           )}
-
-          <details className="group border-t border-gray-100 pt-3">
-            <summary className="cursor-pointer text-sm font-medium text-gray-700 hover:text-gold list-none flex items-center gap-1">
-              <span className="group-open:rotate-90 transition-transform inline-block">
-                ›
-              </span>
-              Additional details (optional)
-            </summary>
-            <div className="grid gap-3 sm:grid-cols-2 mt-3">
-              <FormField label="Email" error={errors.email?.message}>
-                <input
-                  type="email"
-                  placeholder="Email (optional)"
-                  className={inputClass}
-                  {...register("email")}
-                />
-              </FormField>
-              <FormField
-                label="Flight Number"
-                error={errors.flightNumber?.message}
-              >
-                <input
-                  type="text"
-                  placeholder="Flight number (airport transfers)"
-                  className={inputClass}
-                  {...register("flightNumber")}
-                />
-              </FormField>
-              <FormField label="Passengers" error={errors.passengers?.message}>
-                <input
-                  type="text"
-                  placeholder="Number of passengers"
-                  className={inputClass}
-                  {...register("passengers")}
-                />
-              </FormField>
-              <FormField label="Luggage" error={errors.luggage?.message}>
-                <input
-                  type="text"
-                  placeholder="Luggage requirement"
-                  className={inputClass}
-                  {...register("luggage")}
-                />
-              </FormField>
-              <FormField
-                label="Special Notes"
-                error={errors.notes?.message}
-                className="sm:col-span-2"
-              >
-                <textarea
-                  placeholder="Special notes or message"
-                  rows={2}
-                  className={cn(inputClass, "resize-none")}
-                  {...register("notes")}
-                />
-              </FormField>
-            </div>
-          </details>
 
           {submitState === "error" && submitMessage && (
             <p

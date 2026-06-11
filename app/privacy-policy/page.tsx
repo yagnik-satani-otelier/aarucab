@@ -34,10 +34,9 @@ export default function PrivacyPolicyPage() {
               <p>When you submit a booking inquiry, we may collect:</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>Full name and mobile number</li>
-                <li>Email address (if provided)</li>
                 <li>Pickup and drop locations</li>
                 <li>Travel date, time, and trip details</li>
-                <li>Vehicle preference, passenger count, and special notes</li>
+                <li>Vehicle preference (if selected)</li>
               </ul>
             </section>
 
